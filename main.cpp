@@ -1,31 +1,4 @@
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
 
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
 #include <iostream>
 #include <string>
 #include <stdlib.h>
@@ -41,6 +14,8 @@ int main()
    tm result, result2;
    time_t sec_result;
    
+   //teste = "1991-07-03T15:29:00.000Z";
+   //period = 64267306;
    cin >> teste;
    cin >> period;
    
@@ -70,13 +45,17 @@ int main()
     
     sec_result = period + mktime(&result);
     
-    tm *result3 = gmtime(&sec_result);
+    tm *final_result = gmtime(&sec_result);
     
-    char * dt = asctime(result3);
+    char dt[80];
+    
+    
+    
+    strftime(dt, 80, "%FT%T.000Z", final_result);
     
     cout << dt << endl;
     
-
+    
 
 return 0;   
 }
